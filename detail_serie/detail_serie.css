@@ -1,0 +1,41 @@
+#baniere
+{
+	background:url(banniere.jpg) no-repeat;
+	height:150px;
+}
+h1
+{
+	text-align:center;
+	color:red;
+}
+div.gauche {
+  float: left;
+}
+div.droite {
+  float: right;
+  font-size:30px;
+  color:white;
+}
+#imgHIMYM
+{
+	width:500px;
+	top:500px;
+}
+#fleche
+{
+	width:50px;
+	top:50px;
+}
+.etoile
+{
+	width:50px;
+	top:50px;
+}
+div.gaucheserie {
+	width:50%;
+	margin:auto;
+	float: left;
+}
+div.droiteserie {
+  float: right;
+}
