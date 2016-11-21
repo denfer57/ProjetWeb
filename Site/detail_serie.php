@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 	<title>Detail d'une série</title>
@@ -6,16 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
 </head>
 <body>
-	<div id="baniere">
-			<div class="gauche">
-				<form action="recherche.php" method="post">
-					<input type="text" name="recherche" id="recherche" value="Research"/>
-					<input src="images/recherche.png" alt="Recherche" type="image"/>
-				</form>
-			</div>
-			<div class="droite">Détail d'une série</div>
-			<h1>Le site de malade</h1>
-	</div>
+	
+	<?php include("banniere.php"); ?>
+    
 	<div>
 		<div class="gaucheserie">
 			<p>How I Meet Your Mother</p>
@@ -78,6 +71,9 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+    
+	<?php include("footer.php"); ?>
+    
 </body>
 </html>
