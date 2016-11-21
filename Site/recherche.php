@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<title>Accueil</title>
@@ -21,22 +20,13 @@
 			</div>
 			<h1>Le site de malade</h1>
 	</div>
-	<div id="slider">
-		<h1>Faire le slider</h1>
-	</div>
+	
 	<div id="milieu"><div class="gaucheserie">
-		<p>Les simpsons : Dernière saison ?</p>
-		<img src="images/simpsons.jpg" alt="Simpsons" class="img"/>
+        <p>Bonjour !</p>
+
+        <p>Vous avez recerché : <?php echo $_POST['recherche']; ?> !</p>
 	</div>
-	<div class="droiteserie">
-			<p>HIMYM : Les secrets du tournage</p>
-			<img src="images/How-I-Met-Your-Mother.jpg" alt="HIMYM" class="img"/>
-			<div>
-				<p>Le tournage : </p>
-				<p style="text-align:justify;">Blablablablablabla.</p>				
-			</div>
-	</div></div>
-	<!-- A voir, pas sur de mettre des liens, vers quoi ? -->
+        
 	<div id="footer">
 		<a href="http://www.google.com"><img src="images/google.png" alt="Google" class="icone"/></a>
 		<a href="http://www.instagramm.com"><img src="images/insta.png" alt="Instagramm" class="icone"/></a>
