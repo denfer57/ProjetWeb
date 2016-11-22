@@ -1,4 +1,20 @@
-
+<?php 
+include("banniere.php"); 
+include("connexion_bdd.php");
+include("footer.php");
+	$querynom = "SELECT name
+		FROM series
+		WHERE name = :name";
+		$name='How I Met Your Mother'; //donnée récupérée avec le $GET
+		$statement = $connexion->prepare($querynom);
+		$statement->bindValue(":name", $name, PDO::PARAM_STR);
+		$statement->execute();
+		
+		$row = $statement->fetch();
+		//C'est le 1er résultat, il est censé y en avoir qu'un seul...
+		$nom_serie = $row[0];
+?>
+		
 <html>
 <head>
 	<title>Detail d'une série</title>
@@ -7,11 +23,10 @@
 </head>
 <body>
 	
-	<?php include("banniere.php"); ?>
-    
+	
 	<div>
 		<div class="gaucheserie">
-			<p>How I Meet Your Mother</p>
+			<p><?php echo "$nom_serie";?></p>
 				<img src="images/How-I-Met-Your-Mother.jpg" alt="HIMYM" id="imgHIMYM"/>
 				<div>
 					<p>Résumé de la série : </p>
@@ -72,8 +87,6 @@
 			</div>
 		</div>
 	</div>
-    
-	<?php include("footer.php"); ?>
     
 </body>
 </html>
