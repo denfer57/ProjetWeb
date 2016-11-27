@@ -1,92 +1,127 @@
+<script type="text/javascript">
+// Affiche ou masque les épisodes de la saison
+function AfficherMasquer()		
+{
+	divInfo = document.getElementById('divacacher');
+	if (divInfo.style.display == 'none')
+		divInfo.style.display = 'block';
+	else
+		divInfo.style.display = 'none';
+}
+</script>
 <?php 
-include("banniere.php"); 
-include("connexion_bdd.php");
-include("footer.php");
-	$querynom = "SELECT name
+	include("banniere.php"); 
+	include("connexion_bdd.php");
+	//include("footer.php");
+	
+	$nameserie='How I Met Your Mother'; //donnée récupérée au clic pour le détail d'une série avec le $_GET['serie'];
+	
+	//partie requête
+	
+	//1ere requête : nombre de saisons/épisodes de la série, img, résumé, nom de la série, popularité, lien
+	$queryvarserie = "SELECT number_of_seasons, number_of_episodes, poster_path, overview, name, popularity, homepage, id
 		FROM series
 		WHERE name = :name";
-		$name='How I Met Your Mother'; //donnée récupérée avec le $GET
-		$statement = $connexion->prepare($querynom);
-		$statement->bindValue(":name", $name, PDO::PARAM_STR);
-		$statement->execute();
-		
-		$row = $statement->fetch();
-		//C'est le 1er résultat, il est censé y en avoir qu'un seul...
-		$nom_serie = $row[0];
-?>
-		
-<html>
-<head>
-	<title>Detail d'une série</title>
+	$statement = $connexion->prepare($queryvarserie);
+	$statement->bindValue(":name", $nameserie, PDO::PARAM_STR);
+	$statement->execute();
+	$rowvar = $statement->fetch();
+	$nbsaisons = $rowvar[0];
+	$nbepisodes = $rowvar[1];
+	$imgserie = $rowvar[2];
+	$resume = $rowvar[3];
+	$nom_serie = $rowvar[4];
+	$popularity = $rowvar[5];
+	$lien = $rowvar[6];
+	$id = $rowvar[7];
+	
+	//2eme requête : récupération des id de la saison de la série
+	$querysaisons = "SELECT season_id
+		FROM seriesseasons
+		WHERE series_id = :id";
+	$statement = $connexion->prepare($querysaisons);
+	$statement->bindValue(":id", $id, PDO::PARAM_STR);
+	$statement->execute();
+	// on récupère les résultats de la 1ère ligne
+	$numsaisons = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+	/*for($i=0;$i++;i<$querysaisons->rowCount())
+		$numsaisons[i] = $row[i];*/
+	
+	//3eme requête : récupération des noms de la saison de la série
+	$querynamesaisons = "SELECT name, air_date
+		FROM seasons
+		WHERE id = :numsaisons";
+	$statement = $connexion->prepare($querynamesaisons);
+	$statement->bindValue(":numsaisons", $numsaisons[0], PDO::PARAM_STR);
+	$statement->execute();
+	$rows = $statement->fetch();
+	$numsaison = $rows[0];
+	$datesaison = $rows[1];
+	
+	//4eme requête : récupération des id des épisodes de la saison de la série
+	$queryepisodes = "SELECT episode_id
+		FROM seasonsepisodes
+		WHERE season_id = :numsaison";
+	$statement = $connexion->prepare($queryepisodes);
+	$statement->bindValue(":numsaison", $numsaisons[0], PDO::PARAM_STR);
+	$statement->execute();
+	// on récupère les résultats de la 1ère ligne
+	$idepisode = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+	
+	//5eme requête : récupération des noms des épisodes de la saison de la série
+	$querynameepisodes = "SELECT name, air_date, number
+		FROM episodes
+		WHERE id = :idepisode";
+	$statement = $connexion->prepare($querynameepisodes);
+	$statement->bindValue(":idepisode", $idepisode[0], PDO::PARAM_STR);
+	$statement->execute();
+	$rowep = $statement->fetch();
+	$nomepisode = $rowep[0];
+	$dateepisode = $rowep[1];
+	$numepisode = $rowep[2];
+
+	//html de la page
+	$html = "";
+	$html.= '		
+	<html>
+	<head>
+	<title>Detail d\'une série</title>
     <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
-</head>
-<body>
-	
+	</head>
+	<body>
 	
 	<div>
 		<div class="gaucheserie">
-			<p><?php echo "$nom_serie";?></p>
-				<img src="images/How-I-Met-Your-Mother.jpg" alt="HIMYM" id="imgHIMYM"/>
+				<p>'.$nom_serie.'</p>
+				<img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nom_serie.'" id="imgserie"/>
 				<div>
-					<p>Résumé de la série : </p>
-					<p style="text-align:justify;">La série débute en 2030, lorsque Ted Mosby raconte à ses deux enfants comment il a rencontré leur mère. Il se remémore ses jeunes années, et le pilote fait place aux souvenirs de Ted en 2005, où il apprend que son meilleur ami Marshall Eriksen va demander à Lily Aldrin de l’épouser. Ted se demande quand il rencontrera sa future épouse. C’est alors qu’il rencontre Robin Scherbatsky lors de sa dernière sortie au bar où il a l’habitude d’aller, le MacLaren's Pub, où un de ses amis, Barney Stinson, l’aide à faire des rencontres.
-					Et c'est ainsi que commence l'incroyable et très longue histoire de Ted, jusqu'à sa rencontre avec la fameuse mère de ses enfants.</p>
+					<p>Abstract of the series : '.$resume.'</p>
+					<p style="text-align:justify;"></p>
 				</div>
 		</div>
 		<div class="droiteserie">
-			<input id="fleche" src="images/fleche.jpg" alt="masquer ou afficher" type="image" onclick="AfficherMasquer()">
-			<p>Saison 1:</p>
+			<p>There is : '.$nbsaisons.' season(s) and '.$nbepisodes.' episode(s).</p>
+			<p><input id="fleche" src="images/fleche.jpg" alt="masquer ou afficher" type="image" onclick="AfficherMasquer()">'.$numsaison.', date : '.$datesaison.'</p>
 			<div id="divacacher" style="display:none;">
 				<form method="post" name="ajoutepisode" id="ajoutepisode" action="ajoutepisode.php">
-					<p>Épisode 1 : Un signe<input name="Choix[]" value="1" type="checkbox"></p>
-					<p>Épisode 2 : Je te présente Ted<input name="Choix[]" value="2" type="checkbox"></p>
-					<p>Épisode 3 : Un goût de liberté<input name="Choix[]" value="3" type="checkbox"></p>
-					<p>Épisode 4 : Retour de flamme<input name="Choix[]" value="4" type="checkbox"></p>
-					<p>Épisode 5 : La soirée dégustation<input name="Choix[]" value="5" type="checkbox"></p>
-					<p>Épisode 6 : Halloween<input name="Choix[]" value="6" type="checkbox"></p>
-					<p>Épisode 7 : L'élue<input name="Choix[]" value="7" type="checkbox"></p>
-					<p>Épisode 8 : Le duel<input name="Choix[]" value="8" type="checkbox"></p>
-					<p>Épisode 9 : Charité bien ordonnée<input name="Choix[]" value="9" type="checkbox"></p>
-					<p>Épisode 10 : L'affaire de l’Ananas<input name="Choix[]" value="10" type="checkbox"></p>
-					<p>Épisode 11 : Bonne année<input name="Choix[]" value="11" type="checkbox"></p>
-					<p>Épisode 12 : Seul ou accompagné<input name="Choix[]" value="12" type="checkbox"></p>
-					<p>Épisode 13 : L'inconnue<input name="Choix[]" value="13" type="checkbox"></p>
-					<p>Épisode 14 : La bataille navale<input name="Choix[]" value="14" type="checkbox"></p>
-					<p>Épisode 15 : Révélations<input name="Choix[]" value="15" type="checkbox"></p>
-					<p>Épisode 16 : Amour et pâtisserie<input name="Choix[]" value="16" type="checkbox"></p>
-					<p>Épisode 17 : La vie parmi les gorilles<input name="Choix[]" value="17" type="checkbox"></p>
-					<p>Épisode 18 : C'est plus l'heure<input name="Choix[]" value="18" type="checkbox"></p>
-					<p>Épisode 19 : La jalousie a un prix<input name="Choix[]" value="19" type="checkbox"></p>
-					<p>Épisode 20 : C'est mon dernier bal<input name="Choix[]" value="20" type="checkbox"></p>
-					<p>Épisode 21 : Arrière-goût<input name="Choix[]" value="21" type="checkbox"></p>
-					<p>Épisode 22 : La danse de la pluie<input name="Choix[]" value="22" type="checkbox"></p>
-					<input value="Ajouter ce/ces épisodes à mes vues" type="submit">
+					<p>Episode '.$numepisode.' : '.$nomepisode.', date : '.$dateepisode.'<input name="Choix[]" value="1" type="checkbox"></p>
+					<input value="Add this episode(s) on my views" type="submit">
 				</form>
 			</div>
-			<script type="text/javascript">
-			// Affiche ou masque les épisodes de la saison
-			function AfficherMasquer()
-			{
-				divInfo = document.getElementById('divacacher');
-				if (divInfo.style.display == 'none')
-					divInfo.style.display = 'block';
-				else
-					divInfo.style.display = 'none';
-			}
-			</script>
 			<div>
-			<!-- Revoir le système des étoiles en fonction de la BDD & fonction JS qui affiche automatiquement les étoiles en fonction de la note --> 
-			<!-- Système de notation plutôt ? --> 
-				<div>Presse :
-					<p>4,5</p><img src="images/etoile_pleine.png" alt="etoile" class="etoile"/><img src="images/etoile_pleine.png" alt="etoile" class="etoile"/><img src="images/etoile_pleine.png" alt="etoile" class="etoile"/><img src="images/etoile_pleine.png" alt="etoile" class="etoile"/><img src="images/etoile_moitie_vide.png" alt="etoile moitié vide" class="etoile"/>
+				<div>Popularity :
+					<p style="color:red;">'.$popularity.'</p>
 				</div>
-				<div>Spectateur :
-					<p>3</p><img src="images/etoile_pleine.png" alt="etoile" class="etoile"/><img src="images/etoile_pleine.png" alt="etoile" class="etoile"/><img src="images/etoile_pleine.png" alt="etoile" class="etoile"/>
+				<div> More details about the series : 
+					<p><a href="'.$lien.'" target="_blank">Click here</a></p>
 				</div>
 			</div>
 		</div>
 	</div>
     
-</body>
-</html>
+	</body>
+	</html>';
+
+	echo $html;
+?>

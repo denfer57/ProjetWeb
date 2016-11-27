@@ -14,8 +14,6 @@
 	width: 75px;
     height: 75px;
 }
-    
-
 h1
 {
 	text-align:center;
@@ -28,11 +26,6 @@ div.droite {
   float: right;
   font-size:30px;
   color:white;
-}
-#imgHIMYM
-{
-	width:500px;
-	top:500px;
 }
 #fleche
 {
