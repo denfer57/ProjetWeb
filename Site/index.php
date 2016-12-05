@@ -14,19 +14,21 @@
 	include("banniere.php");
 	include("connexion_bdd.php");
 	
-	//1ere requête : nombre de saisons/épisodes de la série, img, résumé, nom de la série, popularité, lien
-	$queryvarserie = "SELECT MAX(popularity),poster_path, name
-		FROM series";
+	//1ere requête : plus populaire
+	$queryvarserie = "SELECT popularity,poster_path, name, id 
+		FROM `series` 
+		ORDER BY `series`.`popularity` DESC";
 	$statement = $connexion->prepare($queryvarserie);
 	$statement->execute();
 	$rowvar = $statement->fetch();
 	$popularity = $rowvar[0];
 	$imgserie = $rowvar[1];
 	$nameserie = $rowvar[2];
+	$idserie = $rowvar[3];
 	
 	$querytop10 = "SELECT * FROM `series` 
 	ORDER BY `series`.`popularity` 
-	DESC LIMIT 10"
+	DESC LIMIT 10";
 	$statement = $connexion->prepare($querytop10);
 	$statement->execute();
 	
@@ -35,7 +37,7 @@
 	</div>
 	<div id="milieu"><div class="gaucheserie">
 		<p>Le plus populaire : '.$popularity.'</p>
-		<a href="http://localhost/Site/Projetweb/Site/detail_serie.php?nameserie='.$nameserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
+		<a href="http://localhost/Site/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
 	</div>
 	<div class="droiteserie">
 			<!-- <p>HIMYM : Les secrets du tournage</p>

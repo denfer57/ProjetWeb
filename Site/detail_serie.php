@@ -14,16 +14,16 @@ function AfficherMasquer()
 	include("connexion_bdd.php");
 	//include("footer.php");
 	
-	$nameserie = $_GET['nameserie']; //donnée récupérée au clic pour le détail d'une série avec le $_GET['serie'];
+	$idserie = $_GET['idserie']; //donnée récupérée au clic pour le détail d'une série avec le $_GET['serie'];
 	
 	//partie requête
 	
 	//1ere requête : nombre de saisons/épisodes de la série, img, résumé, nom de la série, popularité, lien
 	$queryvarserie = "SELECT number_of_seasons, number_of_episodes, poster_path, overview, name, popularity, homepage, id
 		FROM series
-		WHERE name = :name";
+		WHERE id = :id";
 	$statement = $connexion->prepare($queryvarserie);
-	$statement->bindValue(":name", $nameserie, PDO::PARAM_STR);
+	$statement->bindValue(":id", $idserie, PDO::PARAM_STR);
 	$statement->execute();
 	$rowvar = $statement->fetch();
 	$nbsaisons = $rowvar[0];
@@ -42,44 +42,23 @@ function AfficherMasquer()
 	$statement = $connexion->prepare($querysaisons);
 	$statement->bindValue(":id", $id, PDO::PARAM_STR);
 	$statement->execute();
-	// on récupère les résultats de la 1ère ligne
+	// on récupère les résultats de la 1ère colonne
 	$numsaisons = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-	/*for($i=0;$i++;i<$querysaisons->rowCount())
-		$numsaisons[i] = $row[i];*/
 	
 	//3eme requête : récupération des noms de la saison de la série
-	$querynamesaisons = "SELECT name, air_date
+	$querynamesaisons = "SELECT name, air_date, poster_path
 		FROM seasons
 		WHERE id = :numsaisons";
 	$statement = $connexion->prepare($querynamesaisons);
-	$statement->bindValue(":numsaisons", $numsaisons[0], PDO::PARAM_STR);
-	$statement->execute();
-	$rows = $statement->fetch();
-	$numsaison = $rows[0];
-	$datesaison = $rows[1];
-	
-	//4eme requête : récupération des id des épisodes de la saison de la série
-	$queryepisodes = "SELECT episode_id
-		FROM seasonsepisodes
-		WHERE season_id = :numsaison";
-	$statement = $connexion->prepare($queryepisodes);
-	$statement->bindValue(":numsaison", $numsaisons[0], PDO::PARAM_STR);
-	$statement->execute();
-	// on récupère les résultats de la 1ère ligne
-	$idepisode = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-	
-	//5eme requête : récupération des noms des épisodes de la saison de la série
-	$querynameepisodes = "SELECT name, air_date, number
-		FROM episodes
-		WHERE id = :idepisode";
-	$statement = $connexion->prepare($querynameepisodes);
-	$statement->bindValue(":idepisode", $idepisode[0], PDO::PARAM_STR);
-	$statement->execute();
-	$rowep = $statement->fetch();
-	$nomepisode = $rowep[0];
-	$dateepisode = $rowep[1];
-	$numepisode = $rowep[2];
-
+	for($i=0;$i<count($numsaisons);$i++){
+		$statement->bindValue(":numsaisons", $numsaisons[$i], PDO::PARAM_STR);
+		$statement->execute();
+		$rows = $statement->fetch();
+		$namesaison[$i] = $rows[0];
+		$datesaison[$i] = $rows[1];
+		$imgseriesaison[$i] = $rows[2];
+	}
+		
 	//html de la page
 	$html = "";
 	$html.= '		
@@ -99,24 +78,29 @@ function AfficherMasquer()
 					<p>Abstract of the series : '.$resume.'</p>
 					<p style="text-align:justify;"></p>
 				</div>
+				<div>
+					<div>Popularity :
+							<p style="color:red;">'.$popularity.'</p>
+					</div>
+					<div> More details about the series : 
+						<p><a href="'.$lien.'" target="_blank">Click here</a></p>
+					</div>
+				</div>
+				<form>
+					<input type="button" value="Retour" onclick="history.go(-1)">
+				</form>
 		</div>
 		<div class="droiteserie">
-			<p>There is : '.$nbsaisons.' season(s) and '.$nbepisodes.' episode(s).</p>
-			<p><input id="fleche" src="images/fleche.jpg" alt="masquer ou afficher" type="image" onclick="AfficherMasquer()">'.$numsaison.', date : '.$datesaison.'</p>
-			<div id="divacacher" style="display:none;">
-				<form method="post" name="ajoutepisode" id="ajoutepisode" action="ajoutepisode.php">
-					<p>Episode '.$numepisode.' : '.$nomepisode.', date : '.$dateepisode.'<input name="Choix[]" value="1" type="checkbox"></p>
-					<input value="Add this episode(s) on my views" type="submit">
-				</form>
-			</div>
-			<div>
-				<div>Popularity :
-					<p style="color:red;">'.$popularity.'</p>
-				</div>
-				<div> More details about the series : 
-					<p><a href="'.$lien.'" target="_blank">Click here</a></p>
-				</div>
-			</div>
+			<p>There is : '.$nbsaisons.' season(s) and '.$nbepisodes.' episode(s).</p>';
+			for($i=0;$i<count($numsaisons);$i++){
+				$html .= '<p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p>
+				<p>
+					<a href="http://localhost/Site/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'">
+						<img src="https://image.tmdb.org/t/p/w185'.$imgseriesaison[$i].'" alt="'.$namesaison[$i].'" id="imgseriesaison"/>
+					</a>
+				</p>';
+			}
+			$html .='</div>
 		</div>
 	</div>
     
