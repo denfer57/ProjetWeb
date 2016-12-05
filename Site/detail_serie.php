@@ -14,7 +14,7 @@ function AfficherMasquer()
 	include("connexion_bdd.php");
 	//include("footer.php");
 	
-	$nameserie='How I Met Your Mother'; //donnée récupérée au clic pour le détail d'une série avec le $_GET['serie'];
+	$nameserie = $_GET['nameserie']; //donnée récupérée au clic pour le détail d'une série avec le $_GET['serie'];
 	
 	//partie requête
 	

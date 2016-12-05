@@ -1,34 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Accueil</title>
-    <meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
-</head>
-<body>
-	<!-- Modèle de base, revoir le design ainsi que les fonctionnalités
-	Arnaud tu dois t'en charger -->
+<?php
+	$html = "";
+	$html .= '<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Accueil</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="detail_serie.css" />
+	</head>
+	<body>';
+	//Modèle de base, revoir le design ainsi que les fonctionnalités
+	//Arnaud tu dois t'en charger
 	
-	<?php include("banniere.php"); ?>
-    
-	<div id="slider">
+	include("banniere.php");
+	include("connexion_bdd.php");
+	
+	//1ere requête : nombre de saisons/épisodes de la série, img, résumé, nom de la série, popularité, lien
+	$queryvarserie = "SELECT MAX(popularity),poster_path, name
+		FROM series";
+	$statement = $connexion->prepare($queryvarserie);
+	$statement->execute();
+	$rowvar = $statement->fetch();
+	$popularity = $rowvar[0];
+	$imgserie = $rowvar[1];
+	$nameserie = $rowvar[2];
+	
+	$querytop10 = "SELECT * FROM `series` 
+	ORDER BY `series`.`popularity` 
+	DESC LIMIT 10"
+	$statement = $connexion->prepare($querytop10);
+	$statement->execute();
+	
+	$html .= '<div id="slider">
 		<h1>Faire le slider</h1>
 	</div>
 	<div id="milieu"><div class="gaucheserie">
-		<p>Les simpsons : Dernière saison ?</p>
-		<img src="images/simpsons.jpg" alt="Simpsons" class="img"/>
+		<p>Le plus populaire : '.$popularity.'</p>
+		<a href="http://localhost/Site/Projetweb/Site/detail_serie.php?nameserie='.$nameserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
 	</div>
 	<div class="droiteserie">
-			<p>HIMYM : Les secrets du tournage</p>
+			<!-- <p>HIMYM : Les secrets du tournage</p>
 			<img src="images/How-I-Met-Your-Mother.jpg" alt="HIMYM" class="img"/>
 			<div>
 				<p>Le tournage : </p>
 				<p style="text-align:justify;">Blablablablablabla.</p>				
-			</div>
+			</div> -->
 	</div></div>
 	<!-- A voir, pas sur de mettre des liens, vers quoi ? -->
 	
 	<?php include("footer.php"); ?>
     
-</body>
-</html>
+	</body>
+	</html>';
+	
+	echo $html;
+?>
