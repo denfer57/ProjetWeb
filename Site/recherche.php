@@ -5,12 +5,31 @@
 	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
 </head>
 <body>
-	<?php include("banniere.php"); ?>
+    
+	<?php include("banniere.php");
+    $recherche=$_POST['recherche'];
+    $html .=
+	"<div id='milieu'>
+        <h2>Résultats correspondants à votre recherche ".$recherche." :</h2>"
+      
+    //Requète        
+	$queryvarserie = "SELECT poster_path, name, original_name, id 
+		FROM `series` WHERE name OR original_name LIKE $recherche ORDER BY `series`.`name` DESC";
+	$statement = $connexion->prepare($queryvarserie);
+	$statement->execute();
+	$rowvar = $statement->fetch();
+	$popularity = $rowvar[0];
+	$imgserie = $rowvar[1];
+	$nameserie = $rowvar[2];
+	$idserie = $rowvar[3];
 	
-	<div id="milieu">
-        <h1>Vous avez recherché : <?php echo $_POST['recherche']; ?> !</h1>
-	</div>
-        
-	<?php include("footer.php"); ?>
+    
+    $html .= 
+        '<div class="gaucheserie">
+		<p>Le plus populaire : '.$popularity.'</p>
+		<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
+	</div>'
+    ?>
+    
 </body>
 </html>

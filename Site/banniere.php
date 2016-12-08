@@ -1,7 +1,7 @@
 <div id="banniere">
 			<div class="gauche">
 				<form action="recherche.php" method="post">
-					<input type="text" name="recherche" id="recherche" value="Rechercher série, acteur..."/>
+					<input type="text" name="recherche" id="recherche" placeholder="Rechercher série, acteur..." required="true"/>
 					<input src="images/recherche.png" alt="Recherche" type="image"/>
 				</form>
 			</div>

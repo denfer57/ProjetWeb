@@ -37,7 +37,7 @@
 	</div>
 	<div id="milieu"><div class="gaucheserie">
 		<p>Le plus populaire : '.$popularity.'</p>
-		<a href="http://localhost/Site/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
+		<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
 	</div>
 	<div class="droiteserie">
 			<!-- <p>HIMYM : Les secrets du tournage</p>
