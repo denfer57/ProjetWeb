@@ -1,14 +1,3 @@
-<script type="text/javascript">
-// Affiche ou masque les épisodes de la saison
-function AfficherMasquer()		
-{
-	divInfo = document.getElementById('divacacher');
-	if (divInfo.style.display == 'none')
-		divInfo.style.display = 'block';
-	else
-		divInfo.style.display = 'none';
-}
-</script>
 <?php 
 	include("banniere.php"); 
 	include("connexion_bdd.php");

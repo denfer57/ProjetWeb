@@ -8,8 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="detail_serie.css" />
 	</head>
 	<body>';
-	//Modèle de base, revoir le design ainsi que les fonctionnalités
-	//Arnaud tu dois t'en charger
 	
 	include("banniere.php");
 	include("connexion_bdd.php");
@@ -35,21 +33,15 @@
 	$html .= '<div id="slider">
 		<h1>Faire le slider</h1>
 	</div>
-	<div id="milieu"><div class="gaucheserie">
-		<p>Le plus populaire : '.$popularity.'</p>
-		<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
+	<div id="milieu">
+		<div class="gaucheserie">
+			<p>Le plus populaire : '.$popularity.'</p>
+			<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
+		</div>
+		<div class="droiteserie">
+			<p>Test</p>
+		</div>
 	</div>
-	<div class="droiteserie">
-			<!-- <p>HIMYM : Les secrets du tournage</p>
-			<img src="images/How-I-Met-Your-Mother.jpg" alt="HIMYM" class="img"/>
-			<div>
-				<p>Le tournage : </p>
-				<p style="text-align:justify;">Blablablablablabla.</p>				
-			</div> -->
-	</div></div>
-	<!-- A voir, pas sur de mettre des liens, vers quoi ? -->
-	
-	<?php include("footer.php"); ?>
     
 	</body>
 	</html>';
