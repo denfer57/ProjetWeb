@@ -6,30 +6,45 @@
 </head>
 <body>
     
-	<?php include("banniere.php");
+	<?php
     $recherche=$_POST['recherche'];
-    $html .=
-	"<div id='milieu'>
-        <h2>Résultats correspondants à votre recherche ".$recherche." :</h2>"
+    $html="";
+    include("banniere.php");
+    include("connexion_bdd.php");
+    $recherche=$_POST['recherche'];
+    $html .="<div id='milieu'>
+        <h2>Résultats correspondants à votre recherche ".$recherche." :</h2>";
       
-    //Requète        
-	$queryvarserie = "SELECT poster_path, name, original_name, id 
-		FROM `series` WHERE name OR original_name LIKE $recherche ORDER BY `series`.`name` DESC";
-	$statement = $connexion->prepare($queryvarserie);
-	$statement->execute();
-	$rowvar = $statement->fetch();
-	$popularity = $rowvar[0];
-	$imgserie = $rowvar[1];
-	$nameserie = $rowvar[2];
-	$idserie = $rowvar[3];
-	
+    //Requète récupération séries semblables à la recherche        
+	$querych = "SELECT poster_path, name, id 
+		FROM `series`
+        WHERE name LIKE '%$recherche%' ORDER BY `series`.`name`";
+	$statement = $connexion->query($querych);
+    $compt=0;
+    while ($rowch=$statement->fetch()){
+        $imgserie[$compt]=$rowch[0];
+        $nameserie[$compt]=$rowch[1];
+        $idserie[$compt]=$rowch[2];
+        $compt++;
+    }
+    if ($compt==0){
+        
+		$html .=
+        '<div class="affichageserie">
+        <p>Pas de résultat</p>';
+    }
+    else {
+    for($i=0;$i<$compt;$i++){
+		$html .=
+        '<div class="affichageserie">
+		<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgserie"/></a>';
+	}}
+    $html .='</div></div>';
     
-    $html .= 
-        '<div class="gaucheserie">
-		<p>Le plus populaire : '.$popularity.'</p>
-		<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
-	</div>'
+    echo($html);
+    
     ?>
+    
     
 </body>
 </html>

@@ -95,7 +95,7 @@ function AfficherMasquer()
 			for($i=0;$i<count($numsaisons);$i++){
 				$html .= '<p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p>
 				<p>
-					<a href="http://localhost/Site/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'">
+					<a href="http://localhost/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'">
 						<img src="https://image.tmdb.org/t/p/w185'.$imgseriesaison[$i].'" alt="'.$namesaison[$i].'" id="imgseriesaison"/>
 					</a>
 				</p>';

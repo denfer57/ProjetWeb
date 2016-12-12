@@ -45,3 +45,9 @@ div.gaucheserie {
 div.droiteserie {
   float: right;
 }
+#affichageserie{
+#imgserie{
+    float:left;
+    margin-left: 20px;
+    }
+}
