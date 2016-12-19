@@ -3,6 +3,7 @@
 	<title>Accueil</title>
     <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
     
@@ -26,20 +27,24 @@
         $nameserie[$compt]=$rowch[1];
         $idserie[$compt]=$rowch[2];
         $compt++;
-    }
+    } //S'il n'y a pas de serie a afficher
     if ($compt==0){
         
 		$html .=
         '<div class="affichageserie">
         <p>Pas de résultat</p>';
     }
-    else {
+    else { //Sinon
     for($i=0;$i<$compt;$i++){
 		$html .=
         '<div class="affichageserie">
 		<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgserie"/></a>';
 	}}
-    $html .='</div></div>';
+    $html .='</div>;';
+    
+    //Requete récupéraction acteurs
+
+    $html .='</div>';
     
     echo($html);
     

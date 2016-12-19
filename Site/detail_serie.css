@@ -5,14 +5,15 @@
 }
 #footer {
 	background:url(images/banniere.jpg) no-repeat;
-    height: 150px;
-    position: absolute;
+    height: 50px;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    padding-left: 45%;
 }
 #footer .icone {
-	width: 75px;
-    height: 75px;
+	width: 50px;
+    height: 50px;
 }
 h1
 {
@@ -50,4 +51,9 @@ div.droiteserie {
     float:left;
     margin-left: 20px;
     }
+}
+.chico {
+    padding-top: 25%;
+    width= 15%;
+    height: 15%;
 }

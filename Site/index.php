@@ -6,6 +6,7 @@
 		<title>Accueil</title>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" type="text/css" href="detail_serie.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
 	</head>
 	<body>';
 	
@@ -41,10 +42,8 @@
 		<div class="droiteserie">
 			<p>Test</p>
 		</div>
-	</div>
-    
-	</body>
-	</html>';
-	
+	</div>';
 	echo $html;
+    include("footer.php");
+	
 ?>

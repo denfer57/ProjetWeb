@@ -34,11 +34,9 @@
 		<p style="text-align: center;">Redirection vers la page d\'accueil dans <span id="Message">5</span> seconde(s).</p>';
 	}
 	
-	$html.= '
-	</body>
-	</html>';
-	
 	echo $html;
+    include("footer.php");
+	
 ?>
 <script>
 		var i = 5;
