@@ -38,7 +38,10 @@
     for($i=0;$i<$compt;$i++){
 		$html .=
         '<div class="affichageserie">
-		<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgserie"/></a>';
+		<p>
+            <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"<p style="font-size:30px;">'.$nameserie[$i].'</p></a>
+            <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgserie"></a>
+        </p>';
 	}}
     $html .='</div>;';
     

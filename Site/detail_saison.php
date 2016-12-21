@@ -30,7 +30,7 @@
 	$html.= '		
 	<html>
 	<head>
-	<title>Detail d\'une série</title>
+	<title>Detail d\'une saison</title>
     <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
