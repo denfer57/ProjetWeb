@@ -2,6 +2,7 @@
 	background:url(images/banniere.jpg) no-repeat;
 	height:150px;
     top: 0;
+    min-width: 1200px;
 }
 #footer {
 	background:url(images/banniere.jpg) no-repeat;
@@ -56,4 +57,12 @@ div.droiteserie {
     padding-top: 25%;
     width= 15%;
     height: 15%;
+}
+
+.serie {
+    text-align: center;
+}
+.serie img{
+	height: 250px;
+    width: 170px;
 }

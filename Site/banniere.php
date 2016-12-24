@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8" />
     </head>
-        <div id="banniere">
 
             <section class="row">
-
+                
+        <div id="banniere">
                 <div class="col-lg-3">
                     <form action="recherche.php" method="post">
                         <input type="text" name="recherche" id="recherche" placeholder="Rechercher série, acteur..." required="true"/>
@@ -53,8 +53,7 @@
                         <a href="http://localhost/Projetweb/Site/inscription.php" class="btn btn-warning">Subscribe <span class="glyphicon glyphicon-user"></span></a>
                     </div>
                 </div>
-
+                
             </section>
 
-        </div>
-    </html>
+</html>
