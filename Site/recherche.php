@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Accueil</title>
+        <title>Search</title>
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="detail_serie.css" />
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
@@ -60,6 +60,9 @@
         <div class="col-lg-offset-1 col-lg-10">
         <h3>Series</h3>';
                 for($i=0;$i<$compts;$i++){
+                    if(strlen($nameserie[$i])>=39){                             //On raccourcie les chaines trop longues
+                        $nameserie[$i]=substr($nameserie[$i],0,35)."...";
+                    }
                     $html .=
                         '<div class="serie">
             <div class="col-lg-3">
@@ -76,17 +79,20 @@
         <div class="row">
         <div class="col-lg-offset-1 col-lg-10">
         <h3>Actors</h3>';
-                for($i=0;$i<$compts;$i++){
+                for($i=0;$i<$compta;$i++){
+                    if(strlen($nameactor[$i])>=39){
+                        $nameactor[$i]=substr($nameactor[$i],0,35)."...";
+                    }
                     $html .=
                         '<div class="serie">
             <div class="col-lg-3">
             <a href="http://localhost/Projetweb/Site/detail_actor.php?idactor='.$idactor[$i].'"<p style="font-size:20px;">'.$nameactor[$i].'</p></a>';
                     if ($imgactor[$i]!=NULL){       //On vérifie qu'une image est disponible
-                        $html .='<a href="http://localhost/Projetweb/Site/detail_actor.php?idactor   ='.$idactor[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgactor[$i].'" alt="'.$nameactor[$i].'" id="imgactor"></a>
+                        $html .='<a href="http://localhost/Projetweb/Site/detail_actor.php?idactor='.$idactor[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgactor[$i].'" alt="'.$nameactor[$i].'" id="imgactor"></a>
             </div>
         </div>';}
                     else{
-                        $html .='<a href="http://localhost/Projetweb/Site/detail_actor.php?idactor   ='.$idactor[$i].'"><img src="images/portrait-manquant.jpg" alt="'.$nameactor[$i].'" id="imgactor"></a>
+                        $html .='<a href="http://localhost/Projetweb/Site/detail_actor.php?idactor='.$idactor[$i].'"><img src="images/portrait-manquant.jpg" alt="'.$nameactor[$i].'" id="imgactor"></a>
             </div>
         </div>';
                     }
