@@ -10,7 +10,7 @@
                 <div class="col-lg-3">
                     <form action="recherche.php" method="post">
                         <input type="text" name="recherche" id="recherche" placeholder="Rechercher série, acteur..." required="true"/>
-                        <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-search"></span> Search</a>
+                        <button id="search" name="search" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span> Search</button>
                     </form>
                 </div>
 
