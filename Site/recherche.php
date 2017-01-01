@@ -10,6 +10,9 @@
         <?php
         include("banniere.php");
         include("connexion_bdd.php");
+        
+        if (isset($_POST['recherche'])){
+         
         $recherche=$_POST['recherche'];
         $html="";
         $rch_arr=explode(" ",$recherche);
@@ -75,8 +78,8 @@
                         $nameserie[$i]=substr($nameserie[$i],0,17)."...";
                     }
                     $html .=
-                        '<div class="serie">
-            <div class="col-lg-3 col-md-4">
+                        '
+            <div class="col-lg-3 col-md-4"><div class="serie">
             <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"<p style="font-size:20px;">'.$nameserie[$i].'</p></a>
             <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgserie"></a>
             </div>
@@ -95,8 +98,8 @@
                         $nameactor[$i]=substr($nameactor[$i],0,17)."...";
                     }
                     $html .=
-                        '<div class="serie">
-            <div class="col-lg-3 col-md-4">
+                        '
+            <div class="col-lg-3 col-md-4"><div class="serie">
             <a href="http://localhost/Projetweb/Site/detail_actor.php?idactor='.$idactor[$i].'"<p style="font-size:20px;">'.$nameactor[$i].'</p></a>';
                     if ($imgactor[$i]!=NULL){       //On vérifie qu'une image est disponible
                         $html .='<a href="http://localhost/Projetweb/Site/detail_actor.php?idactor='.$idactor[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgactor[$i].'" alt="'.$nameactor[$i].'" id="imgactor"></a>
@@ -113,6 +116,10 @@
 
 
         echo($html);
+            
+        } else {
+            echo('<h1>Recherche Invalide</h1>');
+        }
 
         ?>
 

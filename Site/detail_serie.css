@@ -61,8 +61,12 @@ div.droiteserie {
 
 .serie {
     text-align: center;
+    margin-top: 30px;
 }
 .serie img{
 	height: 250px;
     width: 170px;
+}
+.bouttongenres{
+ text-align: center;
 }
