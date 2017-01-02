@@ -83,7 +83,7 @@
 		<div class="droiteserie">
 			<p>There is : '.$nbsaisons.' season(s) and '.$nbepisodes.' episode(s).</p>';
 			for($i=0;$i<count($numsaisons);$i++){
-				$html .= '<p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p>
+				$html .= '<a href="http://localhost/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'"><p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p></a>
 				<p>
 					<a href="http://localhost/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'">
 						<img src="https://image.tmdb.org/t/p/w185'.$imgseriesaison[$i].'" alt="'.$namesaison[$i].'" id="imgseriesaison"/>

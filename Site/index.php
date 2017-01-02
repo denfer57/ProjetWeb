@@ -32,17 +32,18 @@
 	$statement->execute();
 	
 	$html .= '<div id="slider">
-		<h1>Faire le slider</h1>
+		<h1>Make the slider</h1>
 	</div>
 	<div id="milieu">
 		<div class="gaucheserie">
-			<p>Le plus populaire : '.$popularity.'</p>
+			<p>The most popular : '.$popularity.'</p>
 			<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
 		</div>
 		<div class="droiteserie">
 			<p>Test</p>
 		</div>
-	</div>';
+	</div>
+	</html>';
 	echo $html;
     include("footer.php");
 	
