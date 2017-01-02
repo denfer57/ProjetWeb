@@ -11,6 +11,7 @@
     bottom: 0;
     width: 100%;
     padding-left: 45%;
+    margin-top:500px;
 }
 #footer .icone {
 	width: 50px;
@@ -67,6 +68,12 @@ div.droiteserie {
 	height: 250px;
     width: 170px;
 }
+<<<<<<< HEAD
 .bouttongenres{
  text-align: center;
+=======
+#logo {
+  height:150px;
+  width:500px;
+>>>>>>> 2262ba6698038785eb962fca52d202122aa37317
 }

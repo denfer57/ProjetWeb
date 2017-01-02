@@ -10,9 +10,6 @@
         <?php
         include("banniere.php");
         include("connexion_bdd.php");
-        
-        if (isset($_POST['recherche'])){
-         
         $recherche=$_POST['recherche'];
         $html="";
         $rch_arr=explode(" ",$recherche);
@@ -20,7 +17,6 @@
         $html .="<div class='row'>
         <div class='col-lg-offset-1 col-lg-10'>
         <h2>Résultats correspondants à votre recherche ".$recherche." :</h2></div></div>";
-
         //Requète récupération séries semblables à la recherche pour chaque mot cle
         $querych = "SELECT poster_path, name, id, popularity
 		FROM `series`
@@ -38,7 +34,6 @@
             $idserie[$compts]=$rows[2];
             $compts++;
         }
-
         //Requete récupéraction acteurs
         $queryac = "SELECT profile_path, name, id 
 		FROM `actors`
@@ -56,9 +51,7 @@
             $idactor[$compta]=$rowa[2];    
             $compta++;
         } 
-
         if ($compts==0 AND $compta==0){      //S'il n'y a ni serie ni acteur a afficher
-
             $html .=
                 '<div class="affichageserie">
         <div class="row">
@@ -66,9 +59,7 @@
         <p>No results found</p></div></div>';
         }
         else {
-
             if($compts!=0) {                //S'il y a des séries a afficher
-
                 $html .='
         <div class="row">
         <div class="col-lg-offset-1 col-lg-10">
@@ -78,17 +69,15 @@
                         $nameserie[$i]=substr($nameserie[$i],0,17)."...";
                     }
                     $html .=
-                        '
-            <div class="col-lg-3 col-md-4"><div class="serie">
+                        '<div class="serie">
+            <div class="col-lg-3 col-md-4">
             <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"<p style="font-size:20px;">'.$nameserie[$i].'</p></a>
             <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgserie"></a>
             </div>
         </div>';
                 }$html .='</div></div>';
             }
-
             if($compta!=0) {                      //S'il y a des acteurs a afficher
-
                 $html .='
         <div class="row">
         <div class="col-lg-offset-1 col-lg-10">
@@ -98,8 +87,8 @@
                         $nameactor[$i]=substr($nameactor[$i],0,17)."...";
                     }
                     $html .=
-                        '
-            <div class="col-lg-3 col-md-4"><div class="serie">
+                        '<div class="serie">
+            <div class="col-lg-3 col-md-4">
             <a href="http://localhost/Projetweb/Site/detail_actor.php?idactor='.$idactor[$i].'"<p style="font-size:20px;">'.$nameactor[$i].'</p></a>';
                     if ($imgactor[$i]!=NULL){       //On vérifie qu'une image est disponible
                         $html .='<a href="http://localhost/Projetweb/Site/detail_actor.php?idactor='.$idactor[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgactor[$i].'" alt="'.$nameactor[$i].'" id="imgactor"></a>
@@ -113,14 +102,7 @@
                 }$html .='</div></div>';    
             }
         }
-
-
         echo($html);
-            
-        } else {
-            echo('<h1>Recherche Invalide</h1>');
-        }
-
         ?>
 
     </body>

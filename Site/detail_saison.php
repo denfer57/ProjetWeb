@@ -1,6 +1,13 @@
 <?php
-	include("banniere.php"); 
 	include("connexion_bdd.php");	
+	session_start();
+	//On regarde si l'utilisateur est connecté
+	if($_SESSION) {
+		include("banniereco.php");
+	}
+	else {
+		include("banniere.php");
+	}
 	$numsaisons = $_GET["numsaisons"];
 	
 	$queryepisodes = "SELECT episode_id
@@ -39,19 +46,27 @@
 	
 	for($i=0;$i<count($idepisode);$i++){
 		$html .='
-		<form method="post" name="ajoutepisode" id="ajoutepisode" action="ajoutepisode.php">
-		<img src="https://image.tmdb.org/t/p/w185'.$imgepisode[$i].'" alt="'.$nomepisode[$i].'" id="imgseriesaison"/>
-		Episode '.$numepisode[$i].' : '.$nomepisode[$i].', date : '.$dateepisode[$i].'<input name="Episode[]" value="'.$i.'" type="checkbox">';
+		<div class="container">
+        <div class="row">
+        	<div class="col-lg-10">
+            	<form method="post" name="ajoutepisode" id="ajoutepisode" action="ajoutepisodes.php">
+            	Episode '.$numepisode[$i].' : '.$nomepisode[$i].', date : '.$dateepisode[$i].'<input name="Episode[]" value="'.$idepisode[$i].'" type="checkbox">
+            </div>
+            <div class="col-lg-10">';
+  				if ($imgepisode[$i]!=NULL) $html .= '<img src="https://image.tmdb.org/t/p/w185'.$imgepisode[$i].'" alt="'.$nomepisode[$i].'" id="imgseriesaison"/></div>
+        </div>
+    	</div>';
+				else $html .= '<img src="http://localhost/Projetweb/Site/images/photo_manquante.jpg" alt="Pas d\'image"/></div>
+        </div>
+    	</div>';
 	}
-	$html .='</p><input value="Add this episode(s) on my views" type="submit">
+	$html .=' 
+	</p><input value="Add this episode(s) on my views" type="submit">
 		</form>
 		<form>
 			<input type="button" value="Retour" onclick="history.go(-1)">
-		</form>
-		</div>
-		</div>
-	</div>';
+		</form>';
 	echo $html;
-    include("footer.php");
+    //include("footer.php");
 	
 ?>

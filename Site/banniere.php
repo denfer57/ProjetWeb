@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <a href="http://localhost/Projetweb/Site/"><h1>Le site de malade</h1></a>
+                    <a href="http://localhost/Projetweb/Site/"><img src="http://localhost/Projetweb/Site//images/logo.png" alt="Logo" id="logo"></a>
                 </div>
 
                 <form action="http://localhost/Projetweb/Site/connexion.php" method="post" class="form-horizontal">
