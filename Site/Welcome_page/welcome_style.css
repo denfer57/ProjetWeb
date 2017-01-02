@@ -1,0 +1,16 @@
+body {
+    background-color : gainsboro;
+}
+
+header {
+    background-color: darkgray;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+}
+section {
+    margin: 10px;
+}
