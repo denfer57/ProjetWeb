@@ -49,8 +49,8 @@
 		<div class="container">
         <div class="row">
         	<div class="col-lg-10">
-            	<form method="post" name="ajoutepisode" id="ajoutepisode" action="ajoutepisodes.php?idepisodes='.$numepisode[$i].'">
-            	Episode '.$numepisode[$i].' : '.$nomepisode[$i].', date : '.$dateepisode[$i].'<input name="Episode[]" value="'.$i.'" type="checkbox">
+            	<form method="post" name="ajoutepisode" id="ajoutepisode" action="ajoutepisodes.php">
+            	Episode '.$numepisode[$i].' : '.$nomepisode[$i].', date : '.$dateepisode[$i].'<input name="Episode[]" value="'.$idepisode[$i].'" type="checkbox">
             </div>
             <div class="col-lg-10">';
   				if ($imgepisode[$i]!=NULL) $html .= '<img src="https://image.tmdb.org/t/p/w185'.$imgepisode[$i].'" alt="'.$nomepisode[$i].'" id="imgseriesaison"/></div>

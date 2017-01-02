@@ -25,7 +25,11 @@
                         
                         <!-- deconnection button-->
                         <div class="form-group">
-                                <p> Username : <?php $_SESSION["name"];?></p>
+                                <p> Username : 
+                                <?php
+                                echo $_SESSION['name'];
+                                ?>    
+                                </p>
                                 <button href="http://localhost/Projetweb/Site/deconnexion.php" id="connect" name="connect" type="submit" class="btn btn-danger">Deconnexion</button>
                         </div>
                         

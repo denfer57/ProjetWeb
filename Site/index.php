@@ -33,7 +33,7 @@
 	$nameserie = $rowvar[2];
 	$idserie = $rowvar[3];
 
-	// 2ème requête : Nouvelles séries
+	// 2ème requête : Nouvelle série
 	$queryproc = "SELECT first_air_date, poster_path, name, id 
 		FROM `series` 
 		ORDER BY `series`.`first_air_date` DESC 
@@ -77,6 +77,6 @@
 	</div>
 	</html>';
 	echo $html;
-    //include("footer.php");
+    include("footer.php");
 	
 ?>
