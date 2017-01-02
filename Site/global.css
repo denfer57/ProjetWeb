@@ -11,6 +11,7 @@
     bottom: 0;
     width: 100%;
     padding-left: 45%;
+    margin-top:500px;
 }
 #footer .icone {
 	width: 50px;
@@ -48,7 +49,7 @@ div.droiteserie {
   float: right;
 }
 #affichageserie{
-#imgserie{
+.imgserie{
     float:left;
     margin-left: 20px;
     }
@@ -61,8 +62,16 @@ div.droiteserie {
 
 .serie {
     text-align: center;
+    margin-top: 30px;
 }
 .serie img{
 	height: 250px;
-    width: 170px;
+  width: 170px;
+}
+.bouttongenres{
+  text-align: center;
+}
+#logo {
+  height:150px;
+  width:500px;
 }

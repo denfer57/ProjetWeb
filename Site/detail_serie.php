@@ -1,8 +1,24 @@
+<!DOCTYPE html>		
+	<html>
+	<head>
+	<title>Detail d\'une série</title>
+    <meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="global.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
+	</head>
+	<body>
+
 <?php 
-	include("banniere.php"); 
 	include("connexion_bdd.php");
-	//include("footer.php");
-	
+	session_start();
+	//On regarde si l'utilisateur est connecté
+	if($_SESSION) {
+		include("banniereco.php");
+	}
+	else {
+		include("banniere.php");
+	}
+
 	$idserie = $_GET['idserie']; //donnée récupérée au clic pour le détail d'une série avec le $_GET['serie'];
 	
 	//partie requête
@@ -50,21 +66,13 @@
 		
 	//html de la page
 	$html = "";
-	$html.= '		
-	<html>
-	<head>
-	<title>Detail d\'une série</title>
-    <meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
-	</head>
-	<body>
-	
+	$html.= '	
 	<div>
 		<div class="gaucheserie">
-				<p>'.$nom_serie.'</p>
-				<img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nom_serie.'" id="imgserie"/>
-				<div>
+				<p>'.$nom_serie.'</p>';
+				if ($imgserie!=NULL) $html .= '<img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nom_serie.'" id="imgseriesaison"/>';
+					else $html .= '<img src="http://localhost/Projetweb/Site/images/photo_manquante.jpg" alt="Pas d\'image"/>';	
+				$html .= '<div>
 					<p>Abstract of the series : '.$resume.'</p>
 					<p style="text-align:justify;"></p>
 				</div>
@@ -77,23 +85,23 @@
 					</div>
 				</div>
 				<form>
-					<input type="button" value="Retour" onclick="history.go(-1)">
+					<input type="button" value="Back" onclick="history.go(-1)">
 				</form>
 		</div>
 		<div class="droiteserie">
 			<p>There is : '.$nbsaisons.' season(s) and '.$nbepisodes.' episode(s).</p>';
 			for($i=0;$i<count($numsaisons);$i++){
-				$html .= '<a href="http://localhost/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'"><p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p></a>
+				$html .= '<a href="http://localhost/Projetweb/Site/detail_season.php?numsaisons='.$numsaisons[$i].'"><p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p></a>
 				<p>
-					<a href="http://localhost/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'">
-						<img src="https://image.tmdb.org/t/p/w185'.$imgseriesaison[$i].'" alt="'.$namesaison[$i].'" id="imgseriesaison"/>
-					</a>
-				</p>';
+					<a href="http://localhost/Projetweb/Site/detail_season.php?numsaisons='.$numsaisons[$i].'">';
+					if ($imgseriesaison[$i]!=NULL)	$html .= '<img src="https://image.tmdb.org/t/p/w185'.$imgseriesaison[$i].'" alt="'.$namesaison[$i].'" id="imgseriesaison"/>';
+					else $html .= '<img src="http://localhost/Projetweb/Site/images/photo_manquante.jpg" alt="Pas d\'image"/>';	
 			}
-			$html .='</div>
+			$html .='</a>
+				</p>
+			</div>
 		</div>
 	</div>';
 	echo $html;
-    include("footer.php");
 	
 ?>
