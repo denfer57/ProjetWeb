@@ -13,15 +13,15 @@
 	session_start();
 	//On regarde si l'utilisateur est connecté
 	if($_SESSION) {
-		include("banniereco.php");
+		include("banniereco.php"); // bannière d'utilisateur connecté
 	}
 	else {
-		include("banniere.php");
+		include("banniere.php"); // bannière d'utilisateur non connecté
 	}
 
 	include("connexion_bdd.php");
 	
-	//1ere requête : plus populaire
+	//1ere requête : La plus populaire
 	$queryvarserie = "SELECT popularity,poster_path, name, id 
 		FROM `series` 
 		ORDER BY `series`.`popularity` DESC";

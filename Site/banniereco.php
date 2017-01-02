@@ -22,14 +22,16 @@
                 <form action="http://localhost/Projetweb/Site/deconnexion.php" method="post" class="form-horizontal">
                     
                     <div class="col-lg-1">
-                        
-                        <!-- deconnection button-->
+
                         <div class="form-group">
                                 <p> Username : 
                                 <?php
                                 echo $_SESSION['name'];
                                 ?>    
                                 </p>
+                                <!-- profil button-->
+                                <a href="http://localhost/Projetweb/Site/profil.php" class="btn btn-warning">Profil <span class="glyphicon glyphicon-user"></span></a>
+                                 <!-- deconnection button-->
                                 <button href="http://localhost/Projetweb/Site/deconnexion.php" id="connect" name="connect" type="submit" class="btn btn-danger">Deconnexion</button>
                         </div>
                         

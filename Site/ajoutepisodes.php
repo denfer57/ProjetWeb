@@ -27,7 +27,6 @@
 		for($i=0;$i<count($episodes);$i++){
 			$statement->bindValue(":id", $_SESSION['id'], PDO::PARAM_STR);
 			$statement->bindValue(":episodes", $episodes[$i], PDO::PARAM_STR);
-			var_dump($episodes);
 			$statement->execute();
 		}
 	}
@@ -37,7 +36,7 @@
 		$ndc = $_SESSION['name'];
         if(isset($_POST["Episode"])) {
         	addUserEpisodes($_POST["Episode"],$ndc);
-       		$html.= "L'ajout des épisodes a été effectué !"; 
+       		$html.= "L'ajout d'épisode(s) a été effectué !"; 
         }
         else $html.= "Vous n'avez pas sélectionner d'épisode(s) !"; 
     }

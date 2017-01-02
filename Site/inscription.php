@@ -85,7 +85,8 @@
 			
 		if($champOk == true) {
 			$html.='<p style="color:blue">Les champs ont été validés par le serveur.</p>
-			<p style="color:blue">L\'utilisateur '.$ndc.' a été enregistré.</p>';
+			<p style="color:blue">L\'utilisateur '.$ndc.' a été enregistré.</p>
+			<p> Vous pouvez vous connecter dès à présent !</p>';
 			addUser(); // on ajoute l'utilisateur si tout a été validé
 		}
 		else $html.='<p style="color:green">Veuillez corriger les champs.</p>';
