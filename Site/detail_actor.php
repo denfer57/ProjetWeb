@@ -2,12 +2,19 @@
     <head>
         <title>Actor</title>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="detail_serie.css" />
+        <link rel="stylesheet" type="text/css" href="global.css" />
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
     </head>
     <body>
         <?php
-        include("banniere.php"); 
+        session_start();
+        //On regarde si l'utilisateur est connecté
+        if($_SESSION) {
+            include("banniereco.php"); // bannière d'utilisateur connecté
+        }
+        else {
+            include("banniere.php"); // bannière d'utilisateur non connecté
+        }
         include("connexion_bdd.php");
         //variables	
         $idactor = $_GET["idactor"];

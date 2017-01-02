@@ -2,6 +2,7 @@
 	$html = "";
 	$html.= '<!DOCTYPE html>
 	<head>
+		<meta charset="UTF-8" />
 		<title>Profil</title>
 		<link rel="stylesheet" type="text/css" href="global.css" />
     	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
@@ -25,8 +26,10 @@
 	$statement->execute();
 	$idepisode = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
 
-	if(count($idepisode)>0) $html.= '<p> Vos épisodes vus sont :</p>';
-	else $html.= '<p> Vous n\'avez pas enregistrés d\'épisodes que vous avez vus.</p>';
+	if(count($idepisode)>0) $html.= '<div>
+        <div class="col-lg-3">
+		<p style="font-weight: bold"> Vos épisodes vus sont :</p>';
+	else $html.= '<p style="font-weight: bold"> Vous n\'avez pas enregistrés d\'épisodes que vous avez vus.</p>';
 
 	//On recupère le nom des épisodes ainsi que leurs images.
 	$queryepisode = "SELECT name, still_path
@@ -88,12 +91,74 @@
 		else $html .= '<img src="http://localhost/Projetweb/Site/images/photo_manquante.jpg" alt="Pas d\'image"/>';
 	}
 
+	//On recupere l'id genre des séries visionnés par l'utilisateur
+	$querygenre = "SELECT genre_id
+	FROM seriesgenres
+	WHERE series_id = :idserie";
+	$statement = $connexion->prepare($querygenre);
+	for($i=0;$i<count($idepisode);$i++){
+		$statement->bindValue(":idserie", $idserie[$i], PDO::PARAM_STR);
+		$statement->execute();
+		$rowgen = $statement->fetch();
+		$idgenre[$i] = $rowgen[0];
+	}
+
+	//1 ère recommandation
+	//On regarde 5 séries similaires au hasard du même genre pour l'utilisateur
+	$querygenre = "SELECT series_id
+	FROM seriesgenres
+	WHERE genre_id = :idgenre
+	ORDER BY RAND()
+	LIMIT 5";
+	$statement = $connexion->prepare($querygenre);
+
+	//On associe un genre aléatoire parmi les genres des épisodes de l'utilisateur
+	$statement->bindValue(":idgenre", $idgenre[rand(0, count($idepisode)-1)], PDO::PARAM_STR);
+	$statement->execute();
+	$rowgen = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+	for($i=0;$i<5;$i++){
+		$seriesimi[$i] = $rowgen[$i];
+	}
+
+	//On recupere les infos des séries aléatoires
+	$queryseriealea = "SELECT name, poster_path
+	FROM series
+	WHERE id = :seriesimi";
+	$statement = $connexion->prepare($queryseriealea);
+
+	for($i=0;$i<5;$i++){
+		$statement->bindValue(":seriesimi", $seriesimi[$i], PDO::PARAM_STR);
+		$statement->execute();
+		$rowseasonalea = $statement->fetch();
+		$nameserie[$i] = $rowseasonalea[0];
+		$imgserie[$i] = $rowseasonalea[1];
+	}
+
+	$html .= '</div><div class="col-lg-3">
+	<p style="font-weight: bold">Vos recommandations :</p>';
+
+	for($i=0;$i<5;$i++){
+		$html .= '<p>Série : '.$nameserie[$i].'</p>';
+  		if ($imgserie[$i]!=NULL) $html .= '<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$seriesimi[$i].'">
+  			<img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgseriesaison"/></a>';
+		else $html .= '<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$seriesimi[$i].'">
+			<img src="http://localhost/Projetweb/Site/images/photo_manquante.jpg" alt="Pas d\'image"/></a>';
+	}
+
+	//2ème recommandation 
+
+	
+	/*
+	(1) des séries choisies au hasard parmi les séries dont l’une des thématiques correspond à la thématique la plus fréquente de l’utilisateur ;
+	(2) des séries choisies au hasard parmi les séries du même réalisateur que la série actuellement visualisée sur le site.
+	*/
 	/*Changer de mot de passe ?
 	$html.= '<form action="http://localhost/Projetweb/Site/changermdp.php" method="post">
 		<div><label for="mdp">Nouveau mot de passe : </label><input type="password" name="mdp" id="mdp" required=""/></div>
 		<input name="submit" type="submit" value="Changer" />
 	</form>*/
-	$html .= '</body>
+	$html .= '</div></div>
+	</body>
 	</html>';
 	
 	echo $html;

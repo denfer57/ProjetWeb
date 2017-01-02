@@ -8,13 +8,11 @@
                 
         <div id="banniere">
                 <div class="col-lg-3">
-                    <form action="search.php" method="post">
+                    <form action="http://localhost/Projetweb/Site/search.php" method="post">
                         <input type="text" name="recherche" id="recherche" placeholder="Search series, actors..." required=""/>
-                        <a id="search" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span> Search</a>
+                        <input id="search" class="btn btn-danger" type="submit" value="Search"/>
                     </form>
-                    <form action="catalogue.php" method="post">
-                        <a class="btn btn-warning"><span class="glyphicon glyphicon"></span> See the catalogue</a>
-                    </form>
+                    <a href = "http://localhost/Projetweb/Site/catalogue.php" class="btn btn-warning"><span class="glyphicon glyphicon"></span> See the catalogue</a>
                 </div>
 
                 <div class="col-lg-6">
