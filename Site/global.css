@@ -49,7 +49,7 @@ div.droiteserie {
   float: right;
 }
 #affichageserie{
-#imgserie{
+.imgserie{
     float:left;
     margin-left: 20px;
     }
@@ -66,14 +66,12 @@ div.droiteserie {
 }
 .serie img{
 	height: 250px;
-    width: 170px;
+  width: 170px;
 }
-<<<<<<< HEAD
 .bouttongenres{
- text-align: center;
-=======
+  text-align: center;
+}
 #logo {
   height:150px;
   width:500px;
->>>>>>> 2262ba6698038785eb962fca52d202122aa37317
 }

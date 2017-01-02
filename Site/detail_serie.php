@@ -56,12 +56,12 @@
 		
 	//html de la page
 	$html = "";
-	$html.= '		
+	$html.= '<!DOCTYPE html>		
 	<html>
 	<head>
 	<title>Detail d\'une série</title>
     <meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
+	<link rel="stylesheet" type="text/css" href="global.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
 	</head>
 	<body>
@@ -84,15 +84,15 @@
 					</div>
 				</div>
 				<form>
-					<input type="button" value="Retour" onclick="history.go(-1)">
+					<input type="button" value="Back" onclick="history.go(-1)">
 				</form>
 		</div>
 		<div class="droiteserie">
 			<p>There is : '.$nbsaisons.' season(s) and '.$nbepisodes.' episode(s).</p>';
 			for($i=0;$i<count($numsaisons);$i++){
-				$html .= '<a href="http://localhost/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'"><p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p></a>
+				$html .= '<a href="http://localhost/Projetweb/Site/detail_season.php?numsaisons='.$numsaisons[$i].'"><p>'.$namesaison[$i].', date : '.$datesaison[$i].'</p></a>
 				<p>
-					<a href="http://localhost/Projetweb/Site/detail_saison.php?numsaisons='.$numsaisons[$i].'">';
+					<a href="http://localhost/Projetweb/Site/detail_season.php?numsaisons='.$numsaisons[$i].'">';
 					if ($imgseriesaison[$i]!=NULL)	$html .= '<img src="https://image.tmdb.org/t/p/w185'.$imgseriesaison[$i].'" alt="'.$namesaison[$i].'" id="imgseriesaison"/>';
 					else $html .= '<img src="http://localhost/Projetweb/Site/images/photo_manquante.jpg" alt="Pas d\'image"/>';	
 			}

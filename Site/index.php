@@ -5,7 +5,7 @@
 	<head>
 		<title>Accueil</title>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="detail_serie.css" />
+		<link rel="stylesheet" type="text/css" href="global.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	</head>
@@ -65,16 +65,17 @@
 	<div id="milieu">
 		<div class="gaucheserie">
 			<p>The most popular : '.$popularity.', '.$nameserie.'</p>
-			<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" id="imgserie"/></a>
+			<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie.'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie.'" alt="'.$nameserie.'" class="imgserie"/></a>
 		</div>
 		<div class="droiteserie">
 		New serie : ';
 				$html .= '<p>'.$nameserie2.', sortie le '.$datesortie.'</p>
 				<a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie2.'">';
-				if ($imgserie2!=NULL) $html .= '<img src="https://image.tmdb.org/t/p/w185'.$imgserie2.'" alt="'.$nameserie2.'" id="imgserie"/>';
+				if ($imgserie2!=NULL) $html .= '<img src="https://image.tmdb.org/t/p/w185'.$imgserie2.'" alt="'.$nameserie2.'" class="imgserie"/>';
 				else $html .= '<img src="http://localhost/Projetweb/Site/images/photo_manquante.jpg" alt="Pas d\'image"/>';
 		$html .= '</a></div>
 	</div>
+	</body>
 	</html>';
 	echo $html;
     include("footer.php");

@@ -9,7 +9,7 @@
 			<meta charset="UTF-8" />
 	        <title>Déconnexion</title>
 			<meta name="viewport" content="width=max-device-width, initial-scale=1" />
-			<meta http-equiv="refresh" content="5;index.php"/>
+			<meta http-equiv="refresh" content="5; url=index.php"/>
 		</head>
 		<body>
 			<div style="text-align: center;">

@@ -9,12 +9,12 @@
 		include("banniere.php");
 	}
 	$html = "";
-	$html.= '		
+	$html.= '<!DOCTYPE html>		
 	<html>
 	<head>
 	<title>Ajout</title>
     <meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="detail_serie.css" />
+	<link rel="stylesheet" type="text/css" href="global.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
 	</head>
 	<body>';

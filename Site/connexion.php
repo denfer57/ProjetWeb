@@ -3,7 +3,7 @@
 	$html.= '<!DOCTYPE html>
 	<html>
 	<head>
-		<meta charset=\"UTF-8\" />
+		<meta charset="UTF-8" />
 		<meta http-equiv="refresh" content="5; URL=http://localhost/Projetweb/Site/">
 		<title>Verification connexion</title>
 	</head>

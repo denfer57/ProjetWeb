@@ -8,9 +8,12 @@
                 
         <div id="banniere">
                 <div class="col-lg-3">
-                    <form action="recherche.php" method="post">
-                        <input type="text" name="recherche" id="recherche" placeholder="Rechercher série, acteur..." required="true"/>
-                        <button id="search" name="search" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    <form action="search.php" method="post">
+                        <input type="text" name="recherche" id="recherche" placeholder="Search series, actors..." required=""/>
+                        <a id="search" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span> Search</a>
+                    </form>
+                    <form action="catalogue.php" method="post">
+                        <a class="btn btn-warning"><span class="glyphicon glyphicon"></span> See the catalogue</a>
                     </form>
                 </div>
 
@@ -34,7 +37,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="mdpco">Password</label>
                             <div class="col-md-7">
-                                <input id="mdpco" name="mdpco" placeholder="" class="form-control input-md" required="" type="password">
+                                <input id="mdpco" name="mdpco" placeholder="" class="form-control input-md" required="" type="password"/>
                             </div>
                         </div>
 
@@ -44,16 +47,14 @@
                         
                         <!-- connection button-->
                         <div class="form-group">
-                                <button href="http://localhost/Projetweb/Site/connexion.php" id="connect" name="connect" type="submit" class="btn btn-danger">Connect</button>
+                                <input id="connect" type="submit" class="btn btn-danger" value="Connect"/>
                         </div>
-                        
+                    </div>   
                 </form>
                     
                         <!-- subscribe button-->
-                        <a href="http://localhost/Projetweb/Site/inscription.php" class="btn btn-warning">Subscribe <span class="glyphicon glyphicon-user"></span></a>
+                        <a href="http://localhost/Projetweb/Site/subscribe.php" class="btn btn-warning">Subscribe</a>
                     </div>
-                </div>
-                
             </section>
 
 </html>

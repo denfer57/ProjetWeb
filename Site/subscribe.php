@@ -1,6 +1,5 @@
 ﻿<?php 
 	include("banniere.php");
- 	include("footer.php");
 	function checkUserName($username){
 		include("connexion_bdd.php");
 		$query = "SELECT COUNT(*) nb
@@ -36,7 +35,7 @@
 	$html.= '<!DOCTYPE html>
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="detail_serie.css" />
+		<link rel="stylesheet" type="text/css" href="global.css" />
 		<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
 		<title>Inscription</title>
 	</head>
@@ -46,9 +45,9 @@
 		<form action="http://localhost/Projetweb/Site/inscription.php" method="post">
 				<div><label for="ndc">Nom d\'utilisateur : </label><input type="text" name="ndc" id="ndc" required=""/></div>
 				<div><label for="mdp">Mot de passe : </label><input type="password" name="mdp" id="mdp" required=""/></div>
-				<div><label for="mdpconf">Confirmation du mot de passe : </label><input type="password" name="passwordconf" id="passwordconf" required=""/></div>
-				<label for="mail">Adresse email : </label><input type="text" name="mail" id="mail" required=""/>
-				<input name="submit" type="submit" value="Valider" />
+				<div><label for="passwordconf">Confirmation du mot de passe : </label><input type="password" name="passwordconf" id="passwordconf" required=""/></div>
+				<div><label for="mail">Adresse email : </label><input type="text" name="mail" id="mail" required=""/></div>
+				<input name="submit" type="submit" value="Valider" class="btn btn-warning" />
 		</form>
 	</div>';
 	
