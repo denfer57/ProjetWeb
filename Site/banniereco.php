@@ -1,11 +1,5 @@
 
-<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-
-            <section class="row">
+            <div class="row">
                 
         <div id="banniere">
                 <div class="col-lg-3">
@@ -38,6 +32,4 @@
                     </div>
                 </div>
                 
-            </section>
-
-</html>
+            </div>

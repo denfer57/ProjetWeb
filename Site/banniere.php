@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-
-            <section class="row">
+    <div class="row">
                 
         <div id="banniere">
                 <div class="col-lg-3">
@@ -53,6 +47,4 @@
                         <!-- subscribe button-->
                         <a href="http://localhost/Projetweb/Site/subscribe.php" class="btn btn-warning">Subscribe</a>
                     </div>
-            </section>
-
-</html>
+            </div>

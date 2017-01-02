@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Search</title>
+        <title>Catalogue</title>
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="global.css" />
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
@@ -75,14 +75,14 @@
                         $nameserie[$i]=substr($nameserie[$i],0,17)."...";
                     }
                     $html .=
-            '<div class="col-lg-3 col-md-4">                        <div class="serie">
-
-            <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"<p style="font-size:20px;">'.$nameserie[$i].'</p></a>
-            <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'" id="imgserie"></a>
-            </div>
-        </div>';
+            '<div class="col-lg-3 col-md-4">
+                <div class="serie">
+                    <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><p style="font-size:20px;">'.$nameserie[$i].'</p></a>
+                    <a href="http://localhost/Projetweb/Site/detail_serie.php?idserie='.$idserie[$i].'"><img src="https://image.tmdb.org/t/p/w185'.$imgserie[$i].'" alt="'.$nameserie[$i].'"></a>
+                </div>
+            </div>';
                 }
-            $html.="</div>";
+            $html.="</div></div></div>";
         
     
         echo($html);

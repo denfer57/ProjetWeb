@@ -1,6 +1,4 @@
-<?php
-	$html = "";
-	$html .= '<!DOCTYPE html>
+<!DOCTYPE html>
 	<html>
 	<head>
 		<title>Accueil</title>
@@ -9,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	</head>
-	<body>';
+	<body>
+		<?php
+		$html = "";
 	session_start();
 	//On regarde si l'utilisateur est connecté
 	if($_SESSION) {
@@ -78,6 +78,5 @@
 	</body>
 	</html>';
 	echo $html;
-    include("footer.php");
 	
 ?>

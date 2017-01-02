@@ -1,3 +1,13 @@
+<!DOCTYPE html>		
+	<html>
+	<head>
+	<title>Ajout</title>
+    <meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="global.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
+	</head>
+	<body>
+		
 <?php 
 	include("connexion_bdd.php");
 	session_start();
@@ -9,15 +19,6 @@
 		include("banniere.php");
 	}
 	$html = "";
-	$html.= '<!DOCTYPE html>		
-	<html>
-	<head>
-	<title>Ajout</title>
-    <meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="global.css" />
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
-	</head>
-	<body>';
 
 	function addUserEpisodes($episodes,$name){
 		include("connexion_bdd.php");
@@ -50,5 +51,4 @@
 	</html>";
 
 	echo $html;
-	//include("footer.php");
 ?>

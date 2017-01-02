@@ -1,6 +1,4 @@
-<?php
-	$html = "";
-	$html.= '<!DOCTYPE html>
+<!DOCTYPE html>
 	<head>
 		<meta charset="UTF-8" />
 		<title>Profil</title>
@@ -8,7 +6,10 @@
     	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
     	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	</head>
-	<body>';
+	<body>
+		
+	<?php
+	$html = "";
 	session_start();
 	//L'utilisateur est obligatoirement connecté pour voir son profil.
 	include("banniereco.php"); // bannière d'utilisateur connecté

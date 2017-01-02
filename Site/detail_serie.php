@@ -1,3 +1,13 @@
+<!DOCTYPE html>		
+	<html>
+	<head>
+	<title>Detail d\'une série</title>
+    <meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="global.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
+	</head>
+	<body>
+
 <?php 
 	include("connexion_bdd.php");
 	session_start();
@@ -56,16 +66,7 @@
 		
 	//html de la page
 	$html = "";
-	$html.= '<!DOCTYPE html>		
-	<html>
-	<head>
-	<title>Detail d\'une série</title>
-    <meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="global.css" />
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
-	</head>
-	<body>
-	
+	$html.= '	
 	<div>
 		<div class="gaucheserie">
 				<p>'.$nom_serie.'</p>';
@@ -102,6 +103,5 @@
 		</div>
 	</div>';
 	echo $html;
-    //include("footer.php");
 	
 ?>

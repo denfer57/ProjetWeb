@@ -1,13 +1,13 @@
-<?php
-	$html = "";
-	$html.= '<!DOCTYPE html>
+<!DOCTYPE html>
 	<html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="refresh" content="5; URL=http://localhost/Projetweb/Site/">
 		<title>Verification connexion</title>
 	</head>
-	<body>';
+	<body>
+<?php
+	$html = "";
 	session_start();
 	function verifUser($username){
 		include("connexion_bdd.php");

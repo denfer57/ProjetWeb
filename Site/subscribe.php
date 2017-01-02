@@ -1,4 +1,13 @@
-﻿<?php 
+<!DOCTYPE html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="global.css" />
+		<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
+		<title>Inscription</title>
+	</head>
+	<body>
+
+<?php 
 	include("banniere.php");
 	function checkUserName($username){
 		include("connexion_bdd.php");
@@ -32,14 +41,7 @@
 	}
 	
 	$html = "";
-	$html.= '<!DOCTYPE html>
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="global.css" />
-		<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
-		<title>Inscription</title>
-	</head>
-	<body>
+	$html.= '
 	<div style="text-align:center;">
 		<h1>Inscription</h1>
 		<form action="http://localhost/Projetweb/Site/inscription.php" method="post">
