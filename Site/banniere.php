@@ -1,4 +1,4 @@
-    <div class="row">
+<div class="row">
                 
         <div id="banniere">
                 <div class="col-xs-3">
@@ -50,3 +50,5 @@
                 </div>   
 
             </div>
+
+</div>

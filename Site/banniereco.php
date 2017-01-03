@@ -25,7 +25,7 @@
                                 ?>    
                                 </p>
                                 <!-- profil button-->
-                                <a href="http://localhost/Projetweb/Site/profile.php" class="btn btn-warning">Profil <span class="glyphicon glyphicon-user"></span></a>
+                                <a href="http://localhost/Projetweb/Site/profile.php" class="btn btn-warning">Profile <span class="glyphicon glyphicon-user"></span></a>
                                  <!-- deconnection button-->
                                 <a href="http://localhost/Projetweb/Site/deconnexion.php" class="btn btn-danger">Deconnexion</a>
                         </div>

@@ -140,7 +140,8 @@
 
 		//On recupere le nom du genre
 		$querynamegenre = "SELECT name
-		FROM genres";
+		FROM genres
+		WHERE id = :idgenre";
 		$statement = $connexion->prepare($querynamegenre);
 		for($i=0;$i<count($idepisode);$i++){
 			$statement->bindValue(":idgenre", $idgenre[$randgenre], PDO::PARAM_STR);
