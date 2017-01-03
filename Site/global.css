@@ -1,21 +1,16 @@
 #banniere{
-	background:url(images/banniere.jpg) no-repeat;
+	background-color: darkgray;
 	height:150px;
     top: 0;
-    min-width: 1200px;
 }
-#footer {
-	background:url(images/banniere.jpg) no-repeat;
-    height: 50px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding-left: 45%;
-    margin-top:500px;
+.padd40{
+ padding-top: 40px;
 }
-#footer .icone {
-	width: 50px;
-    height: 50px;
+.padd20{
+ padding-top: 20px;
+}
+#connect{
+ margin-bottom: 15px;
 }
 h1
 {
@@ -73,9 +68,8 @@ div.droiteserie {
 }
 #logo {
   height:150px;
-  width:500px;
-}
-body {
+  width:auto;
+}body {
     background-color : gainsboro;
 }
 

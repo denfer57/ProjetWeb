@@ -1,21 +1,22 @@
 
-            <div class="row">
+    <div class="row">
                 
         <div id="banniere">
-                <div class="col-lg-3">
-                    <form action="search.php" method="post">
+                <div class="col-xs-3">
+                    <div class="padd40">
+                    <form action="http://localhost/Projetweb/Site/search.php" method="post">
                         <input type="text" name="recherche" id="recherche" placeholder="Search series, actors..." required=""/>
-                        <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-search"></span> Search</a>
+                        <input id="search" class="btn btn-danger" type="submit" value="Search"/>
                     </form>
-                    <form action="catalogue.php" method="post">
-                        <button id="search" name="search" class="btn btn-warning"><span class="glyphicon glyphicon"></span> See the catalogue</button>
-                    </form>
+                    <a href = "http://localhost/Projetweb/Site/catalogue.php" class="btn btn-warning"><span class="glyphicon glyphicon"></span> See the catalogue</a>
+                    </div>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-xs-offset-2 col-xs-2">
                     <a href="http://localhost/Projetweb/Site/"><img src="http://localhost/Projetweb/Site//images/logo.png" alt="Logo" id="logo"></a>
                 </div>
-                    <div class="col-lg-1">
+                <div class="padd40">
+                    <div class="col-xs-offset-3 col-xs-2">
 
                         <div class="form-group">
                                 <p> Username : 
@@ -31,5 +32,6 @@
                     
                     </div>
                 </div>
-                
             </div>
+                
+    </div>

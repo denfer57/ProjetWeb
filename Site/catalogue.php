@@ -8,8 +8,14 @@
     </head>
     <body>
 
-        <?php
-        include("banniere.php");
+        <?php 
+        //On regarde si l'utilisateur est connecté
+        if($_SESSION) {
+            include("banniereco.php"); // bannière d'utilisateur connecté
+        }
+        else {
+            include("banniere.php"); // bannière d'utilisateur non connecté
+        }
         include("connexion_bdd.php");
         $html="";
         //requète des genres
