@@ -9,6 +9,7 @@
     <body>
 
         <?php 
+            session_start();
         //On regarde si l'utilisateur est connecté
         if($_SESSION) {
             include("banniereco.php"); // bannière d'utilisateur connecté
