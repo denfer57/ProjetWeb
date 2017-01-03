@@ -1,7 +1,7 @@
 <!DOCTYPE html>		
 	<html>
 	<head>
-	<title>Detail d\'une série</title>
+	<title>Detail d'une série</title>
     <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="global.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
@@ -101,7 +101,9 @@
 				</p>
 			</div>
 		</div>
-	</div>';
+	</div>
+	</body>
+	</html>';
 	echo $html;
 	
 ?>

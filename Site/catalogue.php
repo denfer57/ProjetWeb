@@ -13,7 +13,7 @@
         include("connexion_bdd.php");
         $html="";
         //requète des genres
-        $querygenre="SELECT name, id FROM  genres";
+        $querygenre="SELECT name, id FROM  genres ORDER BY name";
         $statement = $connexion->prepare($querygenre);
         $statement->execute();
         $comptg=0;
@@ -40,7 +40,8 @@
             FROM series
             WHERE id IN (SELECT series_id 
             FROM seriesgenres
-            WHERE genre_id=:genre)";
+            WHERE genre_id=:genre)
+            ORDER BY name";
             $statement = $connexion->prepare($querycat);
             $statement->bindValue(":genre", $genre, PDO::PARAM_STR);
             $statement->execute();

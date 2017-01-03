@@ -1,7 +1,7 @@
 <!DOCTYPE html>		
 	<html>
 	<head>
-	<title>Detail d\'une saison</title>
+	<title>Detail d'une saison</title>
     <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="global.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
